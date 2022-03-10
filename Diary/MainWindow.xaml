@@ -1,9 +1,10 @@
-﻿<Window x:Class="Diary.MainWindow"
+﻿<mah:MetroWindow x:Class="Diary.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Diary"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Dziennik ucznia" Height="450" Width="800">
@@ -24,4 +25,4 @@
         <DataGrid Grid.Row="1" Margin="5" />
 
     </Grid>
-</Window>
+</mah:MetroWindow>
