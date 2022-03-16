@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Name="AddEditStudentWindow"
-        Title="Dane ucznia" Height="540" Width="450">
+        Title="Dane ucznia" Height="540" Width="470">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -69,9 +69,9 @@
             Grid.Column="1" 
             Margin="5"
             ItemsSource="{Binding Groups}"
-                SelectedValue="{Binding Student.Group.Id}"
-                DisplayMemberPath="Name"
-                SelectedValuePath="Id"
+            SelectedValue="{Binding Student.Group.Id}"
+            DisplayMemberPath="Name"
+            SelectedValuePath="Id"
             />
 
         <CheckBox IsChecked="{Binding Student.Activities}" Grid.Row="9" Content="Zajęcia dodatkowe"  Grid.Column="1" Margin="5"/>
@@ -90,11 +90,11 @@
             <Button 
                 Command="{Binding CloseCommand}"
                 CommandParameter="{Binding ElementName=AddEditStudentWindow}"
-                Content="Anuluj" Height="25" Width="100" Margin="5"/>
+                Content="Anuluj" Height="25" Width="100" Margin="10"/>
             <Button 
                 Command="{Binding ConfirmCommand}"
                 CommandParameter="{Binding ElementName=AddEditStudentWindow}"                
-                Content="Zatwierdź" Height="25" Width="100" Margin="5"/>
+                Content="Zatwierdź" Height="25" Width="100" Margin="10"/>
         </StackPanel>
 
     </Grid>

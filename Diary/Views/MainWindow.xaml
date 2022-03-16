@@ -26,6 +26,7 @@
             
             <Button 
                 Command="{Binding EditStudentCommand}"
+                CommandParameter="{Binding SelectedStudent}"
                 Content="Edytuj" 
                 Height="25" 
                 Width="100" 
