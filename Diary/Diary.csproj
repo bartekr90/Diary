@@ -87,6 +87,19 @@
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Commands\AsyncRelayCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Migrations\202203171859086_InitialCreate.cs" />
+    <Compile Include="Migrations\202203171859086_InitialCreate.Designer.cs">
+      <DependentUpon>202203171859086_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203172124507_SetFirstnameMAxLeghtAndReqInStudentsTable.cs" />
+    <Compile Include="Migrations\202203172124507_SetFirstnameMAxLeghtAndReqInStudentsTable.Designer.cs">
+      <DependentUpon>202203172124507_SetFirstnameMAxLeghtAndReqInStudentsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203172137318_SeTLastNameMaxValueAndRequrimentInTable.cs" />
+    <Compile Include="Migrations\202203172137318_SeTLastNameMaxValueAndRequrimentInTable.Designer.cs">
+      <DependentUpon>202203172137318_SeTLastNameMaxValueAndRequrimentInTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Configuration\GroupConfiguration.cs" />
     <Compile Include="Model\Configuration\RatingConfiguration.cs" />
     <Compile Include="Model\Configuration\StudentConfiguration.cs" />
@@ -125,6 +138,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202203171859086_InitialCreate.resx">
+      <DependentUpon>202203171859086_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203172124507_SetFirstnameMAxLeghtAndReqInStudentsTable.resx">
+      <DependentUpon>202203172124507_SetFirstnameMAxLeghtAndReqInStudentsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203172137318_SeTLastNameMaxValueAndRequrimentInTable.resx">
+      <DependentUpon>202203172137318_SeTLastNameMaxValueAndRequrimentInTable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -140,6 +162,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\Conventers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DbScripts\202203172137318_SeTLastNameMaxValueAndRequrimentInTable.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
