@@ -103,12 +103,14 @@
     <Compile Include="Model\Configuration\GroupConfiguration.cs" />
     <Compile Include="Model\Configuration\RatingConfiguration.cs" />
     <Compile Include="Model\Configuration\StudentConfiguration.cs" />
+    <Compile Include="Model\Conventers\StudentConverter.cs" />
     <Compile Include="Model\Domains\Group.cs" />
     <Compile Include="Model\Domains\Rating.cs" />
     <Compile Include="Model\Domains\Student.cs" />
     <Compile Include="Model\Subject.cs" />
     <Compile Include="Model\Wrappers\GroupWrapper.cs" />
     <Compile Include="Model\Wrappers\StudentWrapper.cs" />
+    <Compile Include="Repository.cs" />
     <Compile Include="ViewModel\AddEditStudentViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
@@ -160,9 +162,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\Conventers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="DbScripts\202203172137318_SeTLastNameMaxValueAndRequrimentInTable.sql" />
   </ItemGroup>

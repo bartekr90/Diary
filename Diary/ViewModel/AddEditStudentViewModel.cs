@@ -1,4 +1,5 @@
 ﻿using Diary.Commands;
+using Diary.Model.Domains;
 using Diary.Model.Wrappers;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace Diary.ViewModel
 {
     class AddEditStudentViewModel : ViewModelBase
     {
+        private Repository _repository = new Repository();
+
         public AddEditStudentViewModel(StudentWrapper student = null)
         {
             CloseCommand = new RelayCommand(Close);
@@ -69,9 +72,9 @@ namespace Diary.ViewModel
             }
         }
 
-        private ObservableCollection<GroupWrapper> _groups;
+        private ObservableCollection<Group> _groups;
 
-        public ObservableCollection<GroupWrapper> Groups
+        public ObservableCollection<Group> Groups
         {
             get { return _groups; }
             set
@@ -114,12 +117,10 @@ namespace Diary.ViewModel
         }
         private void InitGroups()
         {
-            Groups = new ObservableCollection<GroupWrapper>
-            {
-                new GroupWrapper { Id = 0, Name = "-- brak --"},
-                new GroupWrapper { Id = 1, Name = "1A"},
-                new GroupWrapper { Id = 2, Name = "2A"},
-            };
+            var gropus = _repository.GetGroups();
+            gropus.Insert(0, new Group { Id = 0, Name = "-- brak --" });
+            Groups = new ObservableCollection<Group>(gropus);
+                       
             Student.Group.Id = 0;
         }
     }
