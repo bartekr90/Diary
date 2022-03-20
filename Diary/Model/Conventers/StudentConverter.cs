@@ -59,13 +59,58 @@ namespace Diary.Model.Conventers
                 Comments = model.Comments,
                 GroupId = model.Group.Id,
                 Activities = model.Activities,
-                
+
             };
         }
         public static List<Rating> ToRatingDao(this StudentWrapper model)
         {
             var ratings = new List<Rating>();
 
+            if (!string.IsNullOrWhiteSpace(model.Math))            
+                model.Math.Split(',').ToList()
+                    .ForEach(x => ratings.Add(
+                        new Rating
+                        {
+                            Rate = int.Parse(x),
+                            StudentId = model.Id,
+                            SubjectId = (int)Subject.Math,
+                        }));
+            if (!string.IsNullOrWhiteSpace(model.ForeignLang))
+                model.ForeignLang.Split(',').ToList()
+                    .ForEach(x => ratings.Add(
+                        new Rating
+                        {
+                            Rate = int.Parse(x),
+                            StudentId = model.Id,
+                            SubjectId = (int)Subject.ForeignLang,
+                        }));
+            if (!string.IsNullOrWhiteSpace(model.Physics))
+                model.Physics.Split(',').ToList()
+                    .ForEach(x => ratings.Add(
+                        new Rating
+                        {
+                            Rate = int.Parse(x),
+                            StudentId = model.Id,
+                            SubjectId = (int)Subject.Physics,
+                        }));
+            if (!string.IsNullOrWhiteSpace(model.PolishLang))
+                model.PolishLang.Split(',').ToList()
+                    .ForEach(x => ratings.Add(
+                        new Rating
+                        {
+                            Rate = int.Parse(x),
+                            StudentId = model.Id,
+                            SubjectId = (int)Subject.PolishLang,
+                        }));
+            if (!string.IsNullOrWhiteSpace(model.Technology))
+                model.Technology.Split(',').ToList()
+                    .ForEach(x => ratings.Add(
+                        new Rating
+                        {
+                            Rate = int.Parse(x),
+                            StudentId = model.Id,
+                            SubjectId = (int)Subject.Technology,
+                        }));
 
             return ratings;
         }

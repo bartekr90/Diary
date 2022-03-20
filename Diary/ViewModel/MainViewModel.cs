@@ -86,27 +86,8 @@ namespace Diary.ViewModel
 
         private void RefreshDiary()
         {
-            Students = new ObservableCollection<StudentWrapper>
-            {
-                new StudentWrapper
-                {
-                    FirstName = "Kazek",
-                    LastName = "Placek",
-                    Group = new GroupWrapper { Id = 1 }
-                },
-                new StudentWrapper
-                {
-                    FirstName = "Marta",
-                    LastName = "Szpara",
-                    Group = new GroupWrapper { Id = 2 }
-                },
-                new StudentWrapper
-                {
-                    FirstName = "Mirek",
-                    LastName = "Ogórek",
-                    Group = new GroupWrapper { Id = 3 }
-                },
-            };
+            Students = new ObservableCollection<StudentWrapper>(
+                _repository.GetStudents(SelectedGroupId));           
         }
 
         private void InitGroups()
@@ -146,7 +127,7 @@ namespace Diary.ViewModel
             if (dialog != MessageDialogResult.Affirmative)
                 return;
 
-            //usuwanie z bazy
+            _repository.DeleteStudent(SelectedStudent.Id);
             RefreshDiary();
 
         }

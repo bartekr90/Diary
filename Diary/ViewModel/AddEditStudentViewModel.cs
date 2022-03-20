@@ -96,14 +96,13 @@ namespace Diary.ViewModel
 
         private void UpdateStudent()
         {
-            // aktualizacja na bazie
-             throw new NotImplementedException();
+            _repository.UpdateStudent(Student);
         }
 
         private void AddStudent()
         {
-            // baza
-            throw new NotImplementedException();
+            _repository.AddStudent(Student);
+
         }
 
         private void Close(object obj)
@@ -120,8 +119,8 @@ namespace Diary.ViewModel
             var gropus = _repository.GetGroups();
             gropus.Insert(0, new Group { Id = 0, Name = "-- brak --" });
             Groups = new ObservableCollection<Group>(gropus);
-                       
-            Student.Group.Id = 0;
+
+            SelectedGroupId = Student.Group.Id;
         }
     }
 }
