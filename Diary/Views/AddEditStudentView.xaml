@@ -28,7 +28,7 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
+
         <Label 
             Visibility="{Binding IsUpdate, Converter={StaticResource BooleanToVisibilityConverter}}" 
             Content="Id:" 
@@ -41,12 +41,14 @@
             Grid.Column="1" 
             Margin="5"
             />
-        
+
         <Label Grid.Row="1" Content="Imię:" Margin="5"/>
-        <TextBox Text="{Binding Student.FirstName}" Grid.Row="1" Grid.Column="1" Margin="5"/>
+        <TextBox Text="{Binding Student.FirstName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" 
+                 Grid.Row="1" Grid.Column="1" Margin="5"/>
 
         <Label Grid.Row="2" Content="Nazwisko:" Margin="5"/>
-        <TextBox Text="{Binding Student.LastName}" Grid.Row="2" Grid.Column="1" Margin="5"/>
+        <TextBox Text="{Binding Student.LastName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" 
+                 Grid.Row="2" Grid.Column="1" Margin="5"/>
 
         <Label Grid.Row="3" Content="Matematyka:" Margin="5"/>
         <TextBox Text="{Binding Student.Math}" Grid.Row="3" Grid.Column="1" Margin="5"/>
@@ -65,11 +67,9 @@
 
         <Label Grid.Row="8" Content="Grupa:" Margin="5"/>
         <ComboBox 
-            Grid.Row="8" 
-            Grid.Column="1" 
-            Margin="5"
             ItemsSource="{Binding Groups}"
-            SelectedValue="{Binding Student.Group.Id}"
+            Grid.Row="8" Grid.Column="1" Margin="5"
+            SelectedValue="{Binding Student.Group.Id, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
             DisplayMemberPath="Name"
             SelectedValuePath="Id"
             />
