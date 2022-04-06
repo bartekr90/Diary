@@ -1,13 +1,11 @@
-﻿using Diary.Model.Domains;
-using Diary.Model.Wrappers;
+﻿using Diary.Model;
 using Diary.Model.Conventers;
+using Diary.Model.Domains;
+using Diary.Model.Wrappers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Entity;
-using Diary.Model;
+using System.Linq;
 
 namespace Diary
 {
@@ -143,6 +141,23 @@ namespace Diary
                 };
                 context.Ratings.Add(rateToAdd);
             });
+        }
+        
+        public bool IsServerConnected()
+        {
+            try
+            {
+                using (var context = new ApplicationDbContext())
+                {
+                    context.Database.Connection.Open();
+                    context.Database.Connection.Close();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

@@ -80,6 +80,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DbSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -87,6 +91,7 @@
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Commands\AsyncRelayCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="DbSettings.cs" />
     <Compile Include="Migrations\202203171859086_InitialCreate.cs" />
     <Compile Include="Migrations\202203171859086_InitialCreate.Designer.cs">
       <DependentUpon>202203171859086_InitialCreate.cs</DependentUpon>
@@ -112,6 +117,7 @@
     <Compile Include="Model\Wrappers\StudentWrapper.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="ViewModel\AddEditStudentViewModel.cs" />
+    <Compile Include="ViewModel\DbSettingsViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="Views\AddEditStudentView.xaml.cs">
@@ -120,6 +126,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\DbSettingsView.xaml.cs">
+      <DependentUpon>DbSettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -165,6 +174,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="DbScripts\202203172137318_SeTLastNameMaxValueAndRequrimentInTable.sql" />
+    <SplashScreen Include="LoadingScreen.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

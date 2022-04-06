@@ -1,10 +1,7 @@
-﻿using System;
+﻿using Diary.Model.Domains;
+using Diary.Model.Wrappers;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Diary.Model.Domains;
-using Diary.Model.Wrappers;
 
 
 namespace Diary.Model.Conventers

@@ -5,10 +5,7 @@ using Diary.Views;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -25,6 +22,9 @@ namespace Diary.ViewModel
             AddStudentCommand = new RelayCommand(AddEditStudent);
             EditStudentCommand = new RelayCommand(AddEditStudent, CanEditDeleteStudent);
             DeleteStudentCommand = new AsyncRelayCommand(DeleteStudent, CanEditDeleteStudent);
+            DbSettingsCommand = new RelayCommand(OpenDbSettings);
+
+            ChangeSettings(_repository.IsServerConnected());
 
             RefreshDiary();
 
@@ -35,6 +35,7 @@ namespace Diary.ViewModel
         public ICommand AddStudentCommand { get; set; }
         public ICommand EditStudentCommand { get; set; }
         public ICommand DeleteStudentCommand { get; set; }
+        public ICommand DbSettingsCommand { get; set; }
 
         private StudentWrapper _selectedStudent;
 
@@ -135,6 +136,33 @@ namespace Diary.ViewModel
         private bool CanEditDeleteStudent(object obj)
         {
             return SelectedStudent != null;
+        }
+        private void ChangeSettings(bool isConncetionOk)
+        {
+            bool _isConncetionOk = isConncetionOk;
+            while (!_isConncetionOk)
+            {
+                ShowSettings(false);
+                _isConncetionOk = _repository.IsServerConnected();
+            }
+        }
+
+        private void OpenDbSettings(object obj)
+        {
+            ShowSettings(true);
+        }
+
+        private void ShowSettings(bool isConncetionOk)
+        {
+            var editDbSettings = new DbSettingsView(isConncetionOk);
+            if (!isConncetionOk)
+                editDbSettings.Closed += EditDbSettings_Closed;
+            editDbSettings.ShowDialog();
+        }
+
+        private void EditDbSettings_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

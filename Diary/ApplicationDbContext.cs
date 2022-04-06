@@ -1,15 +1,16 @@
-using Diary.Model.Domains;
 using Diary.Model.Configuration;
-using System;
+using Diary.Model.Domains;
+using Diary.Properties;
 using System.Data.Entity;
-using System.Linq;
 
 namespace Diary
 {
     public class ApplicationDbContext : DbContext
-    {      
+    {
+        private static readonly string _connectionString = $@"Server={Settings.Default.ServerAdress}\{Settings.Default.ServerName};Database={Settings.Default.Database};User Id={Settings.Default.User};Password={Settings.Default.Password};";
+
         public ApplicationDbContext()
-            : base("name=ApplicationDbContext")
+            : base(_connectionString)
         {
         }
         public DbSet<Student> Students { get; set; }
